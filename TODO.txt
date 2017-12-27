@@ -1,0 +1,32 @@
+The plan:
+
+1) Command-line interface
+2) Simple SDL2 GUI
+3) Fancy SDL2 GUI
+
+-------------------------------------------------------------------------------
+1) Command-line interface for game
+
+    1.1) Interface for user which can read input
+    1.2) Internal representation of game
+            Storing players and scores
+    1.3) Game engine
+            Recording / updating scores
+            Picking targets
+            Game completion and winner announcement
+
+-------------------------------------------------------------------------------
+2) GUI using the SDL2 graphics library
+
+    2.1) Main menu
+          Links to 'Game' and 'Options'
+    2.2) Game
+          Choose difficulty
+          Enter player names
+    2.3) Options
+          Allow for changing points weighting using sliders
+
+-------------------------------------------------------------------------------
+3) Fancier graphics
+
+    3.1) Animate EVERYTHING
