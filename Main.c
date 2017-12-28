@@ -107,7 +107,7 @@ int *calculatePlayOrder() {
 
 // Run the game
 void runGameLoop() {
-  printf("The play order is:\n");
+  printf("\nThe play order is:\n");
 
   for (int i = 0; i < numberOfPlayers; i++) {
     printf("\t(%d) %s\n", i, (state->names)[(state->playOrder)[i]]);
