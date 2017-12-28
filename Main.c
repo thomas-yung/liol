@@ -1,5 +1,6 @@
 // File Dependencies
 #include "Definitions.h"
+#include "GUI.h"
 
 // Macros
 #define EXIT_SUCCESS 0
@@ -11,6 +12,7 @@ int numberOfPlayers = 0;
 
 // Method Declarations
 int main(int ARGC, char** ARGV);
+void initialise();
 void gatherPlayerData();
 int *calculatePlayOrder();
 void runGameLoop();
@@ -20,7 +22,6 @@ void displayResults();
 
 // Method Implementations
 int main(int ARGC, char** ARGV) {
-
   // Gather player info (return a struct for game data?)
   gatherPlayerData();
 
@@ -35,14 +36,23 @@ int main(int ARGC, char** ARGV) {
   exit(EXIT_SUCCESS);
 }
 
-// Request the data for the game from the players and initialise game
-void gatherPlayerData() {
+// Initialise the game state struct and SDL2
+void initialise() {
   // Build game state struct
   state = calloc(1, sizeof(GameState_t));
 
   // Initialise rand()
   srand(time(NULL));
 
+  // Initialise SDL2
+  if(SDL_Init(SDL_INIT_VIDEO) < 0) {
+    printf("SDL could not initialize! SDL_Error: %s\n", SDL_GetError());
+    exit(EXIT_FAILURE);
+  }
+}
+
+// Request the data for the game from the players
+void gatherPlayerData() {
   // Poll user for number of players
   numberOfPlayers = 0;
   while (numberOfPlayers <= 0) {
@@ -242,7 +252,6 @@ int printInstruction(int target) {
   }
 }
 
-
 // Free all resources used by this program
 // (valgrind --tool=memcheck  --leak-check=full --show-leak-kinds=all ....)
 void freeResources() {
@@ -256,4 +265,8 @@ void freeResources() {
   free(state->playOrder);
 
   free(state);
+
+  //Quit SDL subsystems
+  closeWindow();
+  SDL_Quit();
 }

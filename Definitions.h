@@ -4,8 +4,11 @@
 // File Dependencies
 #include <stdio.h>
 #include <stdlib.h>
-#include <time.h>
 #include <string.h>
+#include <time.h>
+
+#include <SDL2/SDL.h>
+#include <SDL2/SDL_image.h>
 
 // Macros
 #define RANDOMNESS_CAP 7
