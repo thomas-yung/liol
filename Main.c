@@ -22,6 +22,9 @@ void displayResults();
 
 // Method Implementations
 int main(int ARGC, char** ARGV) {
+  // Initialise game data
+  initialise();
+
   // Gather player info (return a struct for game data?)
   gatherPlayerData();
 
